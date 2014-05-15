@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-4">
+    <h2>Ohmlets</h2>
+    <ul>
+      {{#each ohmlets}}
+        <li>
+          {{#link-to 'ohmlet' this}}{{name}}{{/link-to}}
+        </li>
+      {{/each}}
+    </ul>
+    
+    <h2>Surveys</h2>
+    <ul>
+      {{#each ohmlets}}
+       {{#each surveys}}
+         <li>
+           {{#link-to 'survey' this}}{{name}}{{/link-to}}
+         </li>
+        {{/each}}
+      {{/each}}
+    </ul>
+    
+    <h2>Streams</h2>
+    <ul>
+      {{#each ohmlets}}
+       {{#each streams}}
+         <li>
+           {{#link-to 'stream' this}}{{name}}{{/link-to}}
+         </li>
+        {{/each}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class="col-md-8">{{outlet}}</div>
+</div>
