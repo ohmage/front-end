@@ -4,6 +4,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('home');
+  this.route('login');
   this.route('browse');
   this.route('styleguide');
 });

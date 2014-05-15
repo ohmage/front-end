@@ -14,7 +14,14 @@
         <li class="active">{{#link-to 'home'}}Home{{/link-to}}</li>
         <li>{{#link-to 'browse'}}Browse{{/link-to}}</li>
       </ul>
-    </div><!--/.nav-collapse -->
+      <ul class="nav navbar-nav navbar-right">
+        {{#if session.isAuthenticated}}
+          <button class="btn btn-default navbar-btn" {{ action 'invalidateSession' }}>Logout</button>
+        {{else}}
+          {{#link-to 'login' }}<button class="btn btn-default navbar-btn">Login</button>{{/link-to}}
+        {{/if}}
+      </ul>
+    </div>
   </div>
 </div>
 
