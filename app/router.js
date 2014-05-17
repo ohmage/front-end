@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('activation', { path: '/activation/:activation_id'});
   this.route('browse');
   this.route('styleguide');
+  this.route("404", { path: "*path"});
 });
 
 export default Router;
