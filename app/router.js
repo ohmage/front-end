@@ -9,6 +9,8 @@ Router.map(function() {
     this.resource('stream', { path: '/streams/:schema_id' });
   });
   this.route('login');
+  this.route('register');
+  this.route('activation', { path: '/activation/:activation_id'});
   this.route('browse');
   this.route('styleguide');
 });
