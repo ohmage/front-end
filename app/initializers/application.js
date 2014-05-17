@@ -26,7 +26,7 @@ var OhmageAuthenticator = Ember.SimpleAuth.Authenticators.OAuth2.extend({
   serverTokenEndpoint: '/ohmage/auth_token',
 
   expiresAt: function(response) {
-   return response.expires/1000;
+   return response.expires;
   },
 
       /**
