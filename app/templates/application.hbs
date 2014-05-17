@@ -26,5 +26,17 @@
 </div>
 
 <div class="container">
+{{#if error}}
+  <div class="alert alert-danger">
+    <strong>Oh snap!</strong> {{error}}
+  </div>
+{{/if}}
+
+{{#if success}}
+  <div class="alert alert-success">
+    <strong>Hooray!</strong> {{success}}
+  </div>
+{{/if}}
+
   {{outlet}}
 </div>
