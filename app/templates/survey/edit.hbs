@@ -1,0 +1,15 @@
+<h2>Survey: {{name}}</h2>
+
+<form class="form-horizontal">
+  <label for="name">Name</label>
+  {{input id='name' value=name}}
+  <br>
+  <label for="description">Description</label>
+  {{textarea id='description' value=description cols="80" rows="6"}}
+  <label for="survey_items">Survey Items</label>
+  {{textarea id='survey_items' value=survey_items cols="80" rows="6"}}
+<div class="btn-group">
+  <button class="btn btn-large btn-primary" {{action 'update' this}}>Save</button>
+  <button class="btn btn-large btn-danger" {{action 'cancel' this}}>Cancel</button>
+</div>
+</form>

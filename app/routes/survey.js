@@ -1,5 +1,10 @@
 export default Ember.Route.extend({
- model: function(params) {
-   return this.store.find('survey', params.schema_id);
+  actions: {
+    update: function(model) {
+      var self = this;
+      model.save().then(function(saved) {
+        self.transitionTo('survey', saved);
+      });
+    }
   }
 });

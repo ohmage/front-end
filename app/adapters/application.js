@@ -1,3 +1,9 @@
 export default DS.RESTAdapter.extend({
-  namespace: 'ohmage'
+  namespace: 'ohmage',
+  ajax: function(url, type, hash) {
+    if(type === 'PUT') {
+      type = 'POST';
+    }
+    return this._super(url, type, hash);
+  },
 });
