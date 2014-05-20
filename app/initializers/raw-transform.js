@@ -1,6 +1,6 @@
 var RawTransform = DS.Transform.extend({
   deserialize: function(serialized) {
-    return serialized ? JSON.stringify(serialized) : null;
+    return serialized ? JSON.stringify(serialized, null, "  ") : null;
   },
   serialize: function(deserialized) {
     return deserialized ? JSON.parse(deserialized) : null;

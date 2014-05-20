@@ -34,4 +34,6 @@ app.import('vendor/ember-simple-auth/ember-simple-auth.js');
 
 app.import('vendor/ember-simple-auth/ember-simple-auth-oauth2.js');
 
+app.import('vendor/jsonlint/web/jsonlint.js');
+
 module.exports = app.toTree();
