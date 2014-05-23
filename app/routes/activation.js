@@ -8,7 +8,7 @@ export default Ember.Route.extend({
   },
   afterModel: function(res, transition) {
     if(!res.error) {
-      this.transitionTo('/home');
+      this.transitionTo('home');
     } else {
       transition.send('showError', res.error);
     }

@@ -3,7 +3,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('home', function() {
+  this.resource('home', { path: '/' }, function() {
     this.resource('ohmlet', { path: '/ohmlet/:ohmlet_id' });
 
     this.resource('survey', function() {
