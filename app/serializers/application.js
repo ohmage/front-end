@@ -35,8 +35,16 @@ var ApplicationSerializer = DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMi
   },
 
   serializeIntoHash: function(hash, type, record, options) {
-   Ember.merge(hash, this.serialize(record, options));
+    Ember.merge(hash, this.serialize(record, options));
   },
+
+  serializeAttribute: function(record, json, key, attribute) {
+    // Only serialize non-null attributes
+    if(record.get(key)) {
+      this._super(record, json, key, attribute);
+    }
+  },
+
 });
 
 export default ApplicationSerializer;

@@ -8,8 +8,9 @@ Router.map(function() {
 
     this.resource('survey', function() {
       this.route('new');
-      this.route('index', { path: '/:survey_id' })
+      this.route('index', { path: '/:survey_id' });
       this.route('edit', { path: '/:survey_id/edit' });
+      this.route('clone', { path: '/:survey_id/clone' });
     });
 
     this.resource('stream', { path: '/streams/:schema_id' });

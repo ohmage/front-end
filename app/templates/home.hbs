@@ -11,12 +11,19 @@
     
     <h2>Surveys</h2>
     <ul>
-      {{#each ohmlets}}
-       {{#each surveys}}
-         <li>
-           {{#link-to 'survey' this}}{{name}}{{/link-to}}
-         </li>
-        {{/each}}
+      {{#each allSurveys}}
+        <li>
+          {{#if id}}
+            {{#link-to 'survey' this}}{{name}}{{/link-to}} / 
+            {{#if this.ownedByCurrentUser}}
+              {{#link-to 'survey.edit' this}}Edit{{/link-to}}
+            {{else}}
+              {{#link-to 'survey.clone' this}}Clone{{/link-to}}
+            {{/if}}
+          {{else}}
+            {{name}}
+          {{/if}}
+        </li>
       {{/each}}
       <li>{{#link-to 'survey.new'}}New Survey{{/link-to}}</li>
     </ul>

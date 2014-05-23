@@ -9,10 +9,17 @@ export default Ember.Route.extend({
     network.
   */
   setupController: function (controller, model) {
-    if(!model.get('survey_items')) {
+    var self = this;
+    if(model.get('id') && !model.get('survey_items')) {
       model.reload().then(function(model) {
-        controller.set("model", model);
+        self.setModel(model);
       })
+    } else {
+      this.setModel(model);
     }
+  },
+
+  setModel: function(model) {
+    this.controller.set("model", model);
   }
 });

@@ -4,5 +4,19 @@ export default DS.Model.extend({
   password: DS.attr('string'),
   ohmlets: DS.hasMany('ohmlet'),
   streams: DS.hasMany('stream'),
-  surveys: DS.hasMany('survey')
+  surveys: DS.hasMany('survey'),
+  allSurveys: function() {
+    var all = [];
+
+    this.get('surveys').forEach(function(survey) {
+      all.push(survey);
+    });
+
+    this.get('ohmlets').forEach(function(ohmlet) {
+      ohmlet.get('surveys').forEach(function(survey) {
+        all.push(survey);
+      });
+    });
+    return all;
+  }.property('surveys', 'ohmlets'),
 });
