@@ -19,4 +19,19 @@ export default DS.Model.extend({
     });
     return all;
   }.property('surveys', 'ohmlets'),
+
+  allStreams: function() {
+    var all = [];
+
+    this.get('streams').forEach(function(stream) {
+      all.push(stream);
+    });
+
+    this.get('ohmlets').forEach(function(ohmlet) {
+      ohmlet.get('streams').forEach(function(stream) {
+        all.push(stream);
+      });
+    });
+    return all;
+  }.property('streams', 'ohmlets'),
 });

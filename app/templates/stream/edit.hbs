@@ -1,0 +1,17 @@
+<h2>Stream: {{name}}</h2>
+
+<form class="form-horizontal">
+  <label for="name">Name</label>
+  {{input id='name' value=name}}
+  <br>
+  <label for="description">Description</label>
+  {{textarea id='description' value=description cols="80" rows="6"}}
+  <label for="definition">Definition</label>
+  {{textarea id='definition' value=definition cols="80" rows="6"}}
+    <label for="apps">Apps</label>
+  {{textarea id='apps' value=apps cols="80" rows="6"}}
+<div class="btn-group">
+  <button class="btn btn-large btn-primary" {{action 'update' this}}>Save</button>
+  <button class="btn btn-large btn-danger" {{action 'cancel' this}}>Cancel</button>
+</div>
+</form>

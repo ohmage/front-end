@@ -30,13 +30,21 @@
     
     <h2>Streams</h2>
     <ul>
-      {{#each ohmlets}}
-       {{#each streams}}
-         <li>
-           {{#link-to 'stream' this}}{{name}}{{/link-to}}
-         </li>
-        {{/each}}
+      {{#each allStreams}}
+        <li>
+          {{#if id}}
+            {{#link-to 'stream' this}}{{name}}{{/link-to}} / 
+            {{#if this.ownedByCurrentUser}}
+              {{#link-to 'stream.edit' this}}Edit{{/link-to}}
+            {{else}}
+              {{#link-to 'stream.clone' this}}Clone{{/link-to}}
+            {{/if}}
+          {{else}}
+            {{name}}
+          {{/if}}
+        </li>
       {{/each}}
+      <li>{{#link-to 'stream.new'}}New Stream{{/link-to}}</li>
     </ul>
   </div>
   <div class="col-md-8">{{outlet}}</div>

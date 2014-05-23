@@ -1,5 +1,3 @@
-import ApplicationSerializer from "./application";
+import SchemaSerializer from "ohmage/serializers/schema";
 
-export default ApplicationSerializer.extend({
-    primaryKey: 'schema_id',
-});
+export default SchemaSerializer.extend({});
