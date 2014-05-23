@@ -1,6 +1,6 @@
-import Edit from 'ohmage/routes/survey/edit'
+import SchemaNewRoute from 'ohmage/routes/schema/new'
 
-export default Edit.extend({
+export default SchemaNewRoute.extend({
   model: function() {
     return this.store.createRecord('survey');
   },
@@ -14,32 +14,8 @@ export default Edit.extend({
     });
   },
 
-  /**
-    Add the new survey to the list of the users surveys
-  */
-  setModel: function(model) {
-    var user = this.store.find('person', this.get('session').content.user_id);
-
-    user.then(function(user){
-      user.get('surveys').pushObject(model);
-      user.notifyPropertyChange('surveys');
-    });
-
-    this._super(model);
+  addModelToUserList: function(user, model) {
+    user.get('surveys').pushObject(model);
+    user.notifyPropertyChange('surveys');
   },
-
-  actions: {
-    cancel: function(model) {
-      this.transitionTo('home');
-    },
-
-    /**
-      Remove the survey from the users survey since it was cancelled
-    */
-    cleanup: function() {
-      var user = this.store.getById('person', this.get('session').content.user_id);
-      user.rollback();
-      this._super();
-    }
-  }
 });

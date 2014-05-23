@@ -1,12 +1,3 @@
-import ApplicationSerializer from "./application";
+import SchemaSerializer from "ohmage/serializers/schema";
 
-export default ApplicationSerializer.extend({
-    primaryKey: 'schema_id',
-
-    serializeAttribute: function(record, json, key, attribute) {
-      // skip owner
-      if('owner' !== key) {
-        this._super(record, json, key, attribute);
-      }
-    },
-});
+export default SchemaSerializer.extend({});

@@ -1,24 +1,9 @@
-import Index from 'ohmage/routes/survey/index'
+import SchemaEditRoute from 'ohmage/routes/schema/edit'
 
-export default Index.extend({
+export default SchemaEditRoute.extend({
   actions: {
     cancel: function(model) {
       this.transitionTo('survey', model);
-    },
-    willTransition: function(transition) {
-      var controller = this.controller;
-      if (controller.get('isDirty')) {
-        if(!confirm("Are you sure you want to cancel?")) {
-          transition.abort();
-          return false;
-        } else {
-          this.send('cleanup');
-        }
-      }
-      return true;
-    },
-    cleanup: function() {
-      this.controller.get('model').rollback();
     }
   },
 });

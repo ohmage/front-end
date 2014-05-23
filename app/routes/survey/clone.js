@@ -1,10 +1,16 @@
-import New from 'ohmage/routes/survey/new';
+import SchemaCloneRoute from 'ohmage/routes/schema/clone';
 
-export default New.extend({
+export default SchemaCloneRoute.extend({
   model: function(params) {
     return this.store.find('survey', params.survey_id);
   },
-  setModel: function(model) {
-    this._super(model.clone());
-  }
+
+  /**
+    Use the edit template for rendering
+  */
+  renderTemplate: function(controller) {
+    this.render('survey.edit', {
+      controller: controller
+    });
+  },
 });
