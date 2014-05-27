@@ -8,16 +8,16 @@ Router.map(function() {
 
     this.resource('survey', function() {
       this.route('new');
-      this.route('index', { path: '/:survey_id' });
-      this.route('edit', { path: '/:survey_id/edit' });
-      this.route('clone', { path: '/:survey_id/clone' });
+      this.route('index', { path: '/:schema_id/:schema_version' });
+      this.route('edit', { path: '/:schema_id/:schema_version/edit' });
+      this.route('clone', { path: '/:schema_id/:schema_version/clone' });
     });
 
     this.resource('stream', function() {
       this.route('new');
-      this.route('index', { path: '/:stream_id' });
-      this.route('edit', { path: '/:stream_id/edit' });
-      this.route('clone', { path: '/:stream_id/clone' });
+      this.route('index', { path: '/:schema_id/:schema_version' });
+      this.route('edit', { path: '/:schema_id/:schema_version/edit' });
+      this.route('clone', { path: '/:schema_id/:schema_version/clone' });
     });
   });
   this.route('login');

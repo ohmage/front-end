@@ -1,4 +1,6 @@
-export default Ember.Route.extend({
+import SchemaMixin from 'ohmage/mixins/schema'
+
+export default Ember.Route.extend(SchemaMixin, {
   /**
     This will check to make sure the model has survey items
     before it is shown. If it doesn't it will go to the

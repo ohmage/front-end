@@ -11,7 +11,7 @@
     
     <h2>Surveys</h2>
     <ul>
-      {{#each allSurveys}}
+      {{#each sortedSurveys}}
         <li>
           {{#if id}}
             {{#link-to 'survey' this}}{{name}}{{/link-to}} / 
@@ -30,7 +30,7 @@
     
     <h2>Streams</h2>
     <ul>
-      {{#each allStreams}}
+      {{#each sortedStreams}}
         <li>
           {{#if id}}
             {{#link-to 'stream' this}}{{name}}{{/link-to}} / 

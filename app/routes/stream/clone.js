@@ -2,7 +2,7 @@ import SchemaCloneRoute from 'ohmage/routes/schema/clone';
 
 export default SchemaCloneRoute.extend({
   model: function(params) {
-    return this.store.find('stream', params.stream_id);
+    return this.store.find('stream', this.buildId(params));
   },
 
   /**
@@ -12,5 +12,10 @@ export default SchemaCloneRoute.extend({
     this.render('stream.edit', {
       controller: controller
     });
+  },
+
+  addModelToUserList: function(user, model) {
+    user.get('streams').pushObject(model);
+    user.notifyPropertyChange('streams');
   },
 });

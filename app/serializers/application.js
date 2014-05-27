@@ -44,7 +44,6 @@ var ApplicationSerializer = DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMi
       this._super(record, json, key, attribute);
     }
   },
-
 });
 
 export default ApplicationSerializer;

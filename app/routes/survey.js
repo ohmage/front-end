@@ -11,9 +11,14 @@ export default Ember.Route.extend({
       }
 
       model.save().then(function(saved) {
-        self.transitionTo('survey', saved);
+        // Update the user's surveys
+        var user = self.store.getById('person', self.get('session').content.user_id);
+        user.reload().then(function() {
+          self.transitionTo('survey', saved);
+        });
+
       }).then(null, function(response) {
-        self.send('showError', response.responseText);
+        self.send('showError', response.responseText || response.message);
       });
     }
   }

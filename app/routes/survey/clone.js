@@ -2,7 +2,7 @@ import SchemaCloneRoute from 'ohmage/routes/schema/clone';
 
 export default SchemaCloneRoute.extend({
   model: function(params) {
-    return this.store.find('survey', params.survey_id);
+    return this.store.find('survey', this.buildId(params));
   },
 
   /**
@@ -12,5 +12,10 @@ export default SchemaCloneRoute.extend({
     this.render('survey.edit', {
       controller: controller
     });
+  },
+
+  addModelToUserList: function(user, model) {
+    user.get('surveys').pushObject(model);
+    user.notifyPropertyChange('surveys');
   },
 });

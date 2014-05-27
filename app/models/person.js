@@ -1,3 +1,16 @@
+var filterNewest = function (list) {
+  return list.reduce(function(ret, item, index, enumerable) {
+    var old = ret.findBy('schema_id', item.get('schema_id'));
+    if(!old) {
+      ret.push(item);
+    } else if(old.get('schema_version') < item.get('schema_version')) {
+      ret.removeObject(old);
+      ret.push(item);
+    }
+    return ret;
+  }, Ember.A());
+}
+
 export default DS.Model.extend({
   email: DS.attr('string'),
   fullName: DS.attr('string'),
@@ -5,7 +18,10 @@ export default DS.Model.extend({
   ohmlets: DS.hasMany('ohmlet'),
   streams: DS.hasMany('stream'),
   surveys: DS.hasMany('survey'),
-  allSurveys: function() {
+
+  schemaSortProperties: ['name'],
+
+  latestSurveys: function() {
     var all = [];
 
     this.get('surveys').forEach(function(survey) {
@@ -17,10 +33,12 @@ export default DS.Model.extend({
         all.push(survey);
       });
     });
-    return all;
+    return filterNewest(all);
   }.property('surveys', 'ohmlets'),
 
-  allStreams: function() {
+  sortedSurveys: Ember.computed.sort('latestSurveys', 'schemaSortProperties'),
+
+  latestStreams: function() {
     var all = [];
 
     this.get('streams').forEach(function(stream) {
@@ -32,6 +50,8 @@ export default DS.Model.extend({
         all.push(stream);
       });
     });
-    return all;
+    return filterNewest(all);
   }.property('streams', 'ohmlets'),
+
+  sortedStreams: Ember.computed.sort('latestStreams', 'schemaSortProperties'),
 });

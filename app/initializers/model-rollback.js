@@ -28,7 +28,17 @@ export default {
             this.get(key).filterBy('isDirty').invoke('rollback');
           }, this);
         }
-      }
+      },
+
+      /**
+        Force save relations on a reload
+      */
+      reload: function() {
+        return this._super().then(function(result) {
+          result._saveRelations();
+          return result;
+        });
+      },
     });
   }
 }
