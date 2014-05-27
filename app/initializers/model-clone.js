@@ -3,8 +3,7 @@ export default {
   initialize: function(container, application) {
     DS.Model.reopen({
       clone: function() {
-        var class_type = this.constructor;
-        var root = class_type.toString().split(":")[1];
+        var root = this.constructor.typeKey;
         var newRecord = this.store.createRecord(root);
 
         var attributeKeys = this.get('constructor.attributes.keys.list');
