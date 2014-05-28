@@ -1,5 +1,5 @@
 var filterNewest = function (list) {
-  return list.reduce(function(ret, item, index, enumerable) {
+  return list.reduce(function(ret, item) {
     var old = ret.findBy('schema_id', item.get('schema_id'));
     if(!old) {
       ret.push(item);
@@ -9,7 +9,7 @@ var filterNewest = function (list) {
     }
     return ret;
   }, Ember.A());
-}
+};
 
 export default DS.Model.extend({
   email: DS.attr('string'),

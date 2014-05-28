@@ -1,6 +1,6 @@
 export default {
   name: 'model-clone',
-  initialize: function(container, application) {
+  initialize: function() {
     DS.Model.reopen({
       clone: function() {
         var root = this.constructor.typeKey;
@@ -12,4 +12,4 @@ export default {
       }
     });
   }
-}
+};

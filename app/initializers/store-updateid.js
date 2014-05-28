@@ -1,6 +1,6 @@
 export default {
   name: 'store-updateId',
-  initialize: function(container, application) {
+  initialize: function() {
     DS.Store.reopen({
 
       /**
@@ -13,4 +13,4 @@ export default {
       },
     });
   }
-}
+};

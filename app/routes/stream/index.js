@@ -1,4 +1,4 @@
-import IndexSchemaRoute from 'ohmage/routes/schema/index'
+import IndexSchemaRoute from 'ohmage/routes/schema/index';
 
 export default IndexSchemaRoute.extend({
   model: function(params) {

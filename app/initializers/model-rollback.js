@@ -1,6 +1,6 @@
 export default {
   name: 'model-rollback',
-  initialize: function(container, application) {
+  initialize: function() {
     DS.Model.reopen({
       // When the record is fetched, save its relations so they can be reverted
       _saveRelations: function() {
@@ -41,4 +41,4 @@ export default {
       },
     });
   }
-}
+};

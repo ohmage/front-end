@@ -1,4 +1,4 @@
-import Edit from 'ohmage/routes/schema/edit'
+import Edit from 'ohmage/routes/schema/edit';
 
 export default Edit.extend({
 
@@ -21,7 +21,7 @@ export default Edit.extend({
   addModelToUserList: Em.K,
 
   actions: {
-    cancel: function(model) {
+    cancel: function() {
       this.transitionTo('home');
     },
 

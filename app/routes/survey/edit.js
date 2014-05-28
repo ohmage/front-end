@@ -1,4 +1,4 @@
-import SchemaEditRoute from 'ohmage/routes/schema/edit'
+import SchemaEditRoute from 'ohmage/routes/schema/edit';
 
 export default SchemaEditRoute.extend({
   model: function(params) {

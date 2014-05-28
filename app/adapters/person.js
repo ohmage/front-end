@@ -14,11 +14,11 @@ export default ApplicationAdapter.extend(SchemaMixin, {
       json.ohmlets.forEach(function(ohmlet) {
         ohmlet.surveys.forEach(self.buildId);
         ohmlet.streams.forEach(self.buildId);
-      })
+      });
 
       json.surveys.forEach(self.buildId);
       json.streams.forEach(self.buildId);
       return json;
-    })
+    });
   },
 });

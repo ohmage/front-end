@@ -44,6 +44,6 @@ export default ApplicationAdapter.extend(SchemaMixin, {
     return this._super(url, type, hash).then(function(json){
       self.buildId(json);
       return json;
-    });;
+    });
   },
 });

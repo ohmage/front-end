@@ -1,4 +1,4 @@
-import Index from 'ohmage/routes/schema/index'
+import Index from 'ohmage/routes/schema/index';
 
 export default Index.extend({
   actions: {

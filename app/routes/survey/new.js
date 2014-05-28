@@ -1,4 +1,4 @@
-import SchemaNewRoute from 'ohmage/routes/schema/new'
+import SchemaNewRoute from 'ohmage/routes/schema/new';
 
 export default SchemaNewRoute.extend({
   model: function() {

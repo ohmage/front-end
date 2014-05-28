@@ -1,4 +1,4 @@
-import SchemaMixin from 'ohmage/mixins/schema'
+import SchemaMixin from 'ohmage/mixins/schema';
 
 export default Ember.Route.extend(SchemaMixin, {
   /**
@@ -11,7 +11,7 @@ export default Ember.Route.extend(SchemaMixin, {
     if(model.get('id') && !model.isLoaded()) {
       model.reload().then(function(model) {
         self.setModel(model);
-      })
+      });
     } else {
       this.setModel(model);
     }
