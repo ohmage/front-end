@@ -1,6 +1,4 @@
-import Index from 'ohmage/routes/schema/index';
-
-export default Index.extend({
+export default Ember.Mixin.create({
   actions: {
     willTransition: function(transition) {
       var controller = this.controller;

@@ -1,6 +1,10 @@
-import SchemaCloneRoute from 'ohmage/routes/schema/clone';
+import ReloadModel from 'ohmage/mixins/reload-model';
+import Editable from 'ohmage/mixins/editable';
+import NewModel from 'ohmage/mixins/new-model';
+import CloneModel from 'ohmage/mixins/clone-model';
+import Schema from 'ohmage/mixins/schema';
 
-export default SchemaCloneRoute.extend({
+export default Ember.Route.extend(ReloadModel, Editable, NewModel, CloneModel, Schema, {
   model: function(params) {
     return this.store.find('stream', this.buildId(params));
   },

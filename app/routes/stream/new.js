@@ -1,6 +1,8 @@
-import SchemaNewRoute from 'ohmage/routes/schema/new';
+import ReloadModel from 'ohmage/mixins/reload-model';
+import Editable from 'ohmage/mixins/editable';
+import NewModel from 'ohmage/mixins/new-model';
 
-export default SchemaNewRoute.extend({
+export default Ember.Route.extend(ReloadModel, Editable, NewModel, {
   model: function() {
     return this.store.createRecord('stream');
   },
