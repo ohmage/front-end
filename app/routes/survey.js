@@ -4,7 +4,7 @@ export default Ember.Route.extend({
       var self = this;
 
       try {
-        jsonlint.parse(model.get('survey_items'));
+        window.jsonlint.parse(model.get('survey_items'));
       } catch(e) {
         this.send('showError', e);
         return;

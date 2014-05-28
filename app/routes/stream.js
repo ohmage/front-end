@@ -4,14 +4,14 @@ export default Ember.Route.extend({
       var self = this;
 
       try {
-        jsonlint.parse(model.get('definition'));
+        window.jsonlint.parse(model.get('definition'));
       } catch(e) {
         this.send('showError', e);
         return;
       }
 
       try {
-        jsonlint.parse(model.get('apps'));
+        window.jsonlint.parse(model.get('apps'));
       } catch(e) {
         this.send('showError', e);
         return;
