@@ -41,4 +41,13 @@ app.import('vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/d
 app.import('vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js');
 app.import('vendor/metisMenu/jquery.metisMenu.js');
 
-module.exports = app.toTree();
+
+var pickFiles = require('broccoli-static-compiler');
+var aceEditor = pickFiles('vendor/ace-builds/src-min-noconflict/', {
+    srcDir: '/',
+    files: ['worker-json.js', 'ace.js', 'mode-json.js'],
+    destDir: '/assets'
+});
+
+var mergeTrees = require('broccoli-merge-trees');
+module.exports = mergeTrees([app.toTree(), aceEditor]);

@@ -16,7 +16,7 @@
     </div>
     <div class="form-group">
         <label>Survey Items</label>
-        {{textarea id="survey_items" value=survey_items class='form-control'}}
+        {{ace-editor id="survey_items" content=survey_items class='form-control'}}
     </div>
 
     <button type="submit" class="btn btn-default" {{action 'update' this}}>Save</button>

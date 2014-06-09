@@ -16,6 +16,7 @@
     "ember-simple-auth": "~0.4.0",
     "jsonlint": "~1.6.0",
     "fontawesome": "~4.1.0",
-    "metisMenu": "~1.0.1"
+    "metisMenu": "~1.0.1",
+    "ace-builds": "~1.1.3"
   }
 }

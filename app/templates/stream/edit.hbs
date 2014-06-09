@@ -16,11 +16,11 @@
     </div>
     <div class="form-group">
         <label>Definition</label>
-        {{textarea id="definition" value=definition class='form-control'}}
+        {{ace-editor id="definition" content=definition class='form-control'}}
     </div>
     <div class="form-group">
         <label>Apps</label>
-        {{textarea id="apps" value=apps class='form-control'}}
+        {{ace-editor id="apps" content=apps class='form-control'}}
     </div>
 
     <button type="submit" class="btn btn-default" {{action 'update' this}}>Save</button>
