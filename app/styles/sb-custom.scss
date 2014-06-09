@@ -1,0 +1,33 @@
+body {
+  overflow: hidden;
+}
+
+.sidebar-collapse {
+  overflow: scroll;
+  position:fixed;
+  top: $navbar-height;
+  bottom:0;
+  width: $sidebar-width;
+}
+
+#page-wrapper {
+  overflow: scroll;
+  position:fixed;
+  width:auto;
+  top: $navbar-height;
+  bottom:0;
+  right: 0;
+  left: 0;
+  padding-bottom: 275px;
+}
+
+.overflow-ellipsis {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.nav > li > a.item.active {
+  background-color: #e4e4e4;
+}

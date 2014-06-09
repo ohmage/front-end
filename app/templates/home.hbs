@@ -1,51 +1,76 @@
-<div class="row">
-  <div class="col-md-4">
-    <h2>Ohmlets</h2>
-    <ul>
-      {{#each ohmlets}}
-        <li>
-          {{#link-to 'ohmlet' this}}{{name}}{{/link-to}}
+<div class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+      <ul class="nav" id="side-menu">
+
+        <li class="sidebar-search">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+            </div>
+            <!-- /input-group -->
         </li>
-      {{/each}}
-    </ul>
-    
-    <h2>Surveys</h2>
-    <ul>
-      {{#each sortedSurveys}}
-        <li>
-          {{#if id}}
-            {{#link-to 'survey' this}}{{name}}{{/link-to}} / 
-            {{#if this.ownedByCurrentUser}}
-              {{#link-to 'survey.edit' this}}Edit{{/link-to}}
-            {{else}}
-              {{#link-to 'survey.clone' this}}Clone{{/link-to}}
-            {{/if}}
-          {{else}}
-            {{name}}
-          {{/if}}
+        <li class="active">
+          {{#link-to 'home'}}<i class="fa fa-dashboard fa-fw"></i> Dashboard{{/link-to}}
         </li>
-      {{/each}}
-      <li>{{#link-to 'survey.new'}}New Survey{{/link-to}}</li>
-    </ul>
-    
-    <h2>Streams</h2>
-    <ul>
-      {{#each sortedStreams}}
         <li>
-          {{#if id}}
-            {{#link-to 'stream' this}}{{name}}{{/link-to}} / 
-            {{#if this.ownedByCurrentUser}}
-              {{#link-to 'stream.edit' this}}Edit{{/link-to}}
-            {{else}}
-              {{#link-to 'stream.clone' this}}Clone{{/link-to}}
-            {{/if}}
-          {{else}}
-            {{name}}
-          {{/if}}
+            <a href="#"><i class="fa fa-group fa-fw"></i> Ohmlets<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              {{#each ohmlets}}
+                <li>
+                  {{#link-to 'ohmlet' this}}{{name}}{{/link-to}}
+                </li>
+              {{/each}}
+            </ul>
+            <!-- /.nav-second-level -->
         </li>
-      {{/each}}
-      <li>{{#link-to 'stream.new'}}New Stream{{/link-to}}</li>
-    </ul>
+        <li>
+            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Surveys<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              {{#each sortedSurveys}}
+                <li>
+                  {{#if id}}
+                    {{#link-to 'survey' this class="item"}}
+                      <span class="overflow-ellipsis">
+                        {{name}}
+                      </span>
+                    {{/link-to}}
+                  {{else}}
+                    <a href="#">{{name}}</a>
+                  {{/if}} 
+                </li>
+              {{/each}}
+              <li>{{#link-to 'survey.new' class="item"}}New Survey{{/link-to}}</li>
+            </ul>
+            <!-- /.nav-second-level -->
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-exchange fa-fw"></i> Streams<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              {{#each sortedStreams}}
+                <li>
+                  {{#if id}}
+                    {{#link-to 'stream' this class="item"}}
+                      <span class="overflow-ellipsis">
+                        {{name}}
+                      </span>
+                    {{/link-to}}
+                  {{else}}
+                    <a href="#">{{name}}</a>
+                  {{/if}}
+                </li>
+              {{/each}}
+              <li>{{#link-to 'stream.new'}}New Stream{{/link-to}}</li>
+            </ul>
+            <!-- /.nav-second-level -->
+        </li>
+
+      </ul>
+      <!-- /#side-menu -->
   </div>
-  <div class="col-md-8">{{outlet}}</div>
+  <!-- /.sidebar-collapse -->
 </div>
+<!-- /.navbar-static-side -->

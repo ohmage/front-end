@@ -1,17 +1,28 @@
-<h2>Stream: {{name}}</h2>
-
-<form class="form-horizontal">
-  <label for="name">Name</label>
-  {{input id='name' value=name}}
-  <br>
-  <label for="description">Description</label>
-  {{textarea id='description' value=description cols="80" rows="6"}}
-  <label for="definition">Definition</label>
-  {{textarea id='definition' value=definition cols="80" rows="6"}}
-    <label for="apps">Apps</label>
-  {{textarea id='apps' value=apps cols="80" rows="6"}}
-<div class="btn-group">
-  <button class="btn btn-large btn-primary" {{action 'update' this}}>Save</button>
-  <button class="btn btn-large btn-danger" {{action 'cancel' this}}>Cancel</button>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">{{name}}</h1>
+    </div>
+    <!-- /.col-lg-12 -->
 </div>
+
+<form role="form">
+    <div class="form-group">
+        <label>Name</label>
+        {{input id='name' value=name class='form-control'}}
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        {{input id='description' value=description class='form-control'}}
+    </div>
+    <div class="form-group">
+        <label>Definition</label>
+        {{textarea id="definition" value=definition class='form-control'}}
+    </div>
+    <div class="form-group">
+        <label>Apps</label>
+        {{textarea id="apps" value=apps class='form-control'}}
+    </div>
+
+    <button type="submit" class="btn btn-default" {{action 'update' this}}>Save</button>
+    <button type="reset" class="btn btn-default" {{action 'cancel' this}}>Cancel</button>
 </form>

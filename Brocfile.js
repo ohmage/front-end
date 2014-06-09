@@ -36,4 +36,9 @@ app.import('vendor/ember-simple-auth/ember-simple-auth-oauth2.js');
 
 app.import('vendor/jsonlint/web/jsonlint.js');
 
+app.import('vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js');
+app.import('vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js');
+app.import('vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js');
+app.import('vendor/metisMenu/jquery.metisMenu.js');
+
 module.exports = app.toTree();
