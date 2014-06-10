@@ -2,23 +2,34 @@ body {
   overflow: hidden;
 }
 
-.sidebar-collapse {
-  overflow: scroll;
-  position:fixed;
-  top: $navbar-height;
-  bottom:0;
-  width: $sidebar-width;
+#side-menu {
+  overflow: auto;
+  max-height: calc(100vh - #{2*$navbar-height});
+  width: 100%;
+}
+
+@media(min-width:768px) {
+  #side-menu {
+    width: $sidebar-width;
+    max-height: calc(100vh - #{$navbar-height});
+  }
 }
 
 #page-wrapper {
-  overflow: scroll;
+  overflow: auto;
   position:fixed;
   width:auto;
-  top: $navbar-height;
+  top: 2 * $navbar-height;
   bottom:0;
   right: 0;
   left: 0;
   padding-bottom: 275px;
+}
+
+@media(min-width:768px) {
+  #page-wrapper {
+    top: $navbar-height;
+  }
 }
 
 .overflow-ellipsis {
