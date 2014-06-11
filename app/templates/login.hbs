@@ -30,12 +30,8 @@
                                 {{/if}}
                                 {{input id='password' placeholder='Password' class="form-control" type='password' value=password}}
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                </label>
-                            </div>
                             <button class="btn btn-lg btn-success btn-block">Login</button>
+                            <p class="help-block">Don't have an account? {{#link-to 'register'}}Register{{/link-to}}</p>
                         </fieldset>
                     </form>
                 </div>
