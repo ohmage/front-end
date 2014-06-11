@@ -85,7 +85,8 @@ export default {
     container.register('authorizer:ohmage', OhmageAuthorizer);
     container.register('authenticator:ohmage', OhmageAuthenticator);
     Ember.SimpleAuth.setup(container, application, {
-      authorizerFactory: 'authorizer:ohmage'
+      authorizerFactory: 'authorizer:ohmage',
+      routeAfterAuthentication: 'home'
     });
   }
 };

@@ -31,10 +31,16 @@
                             <div class="form-group">
                                 {{input id='full_name' placeholder='Full Name' class="form-control" value=full_name autofocus="autofocus"}}
                             </div>
-                            <div class="form-group">
+                            <div {{bind-attr class=":form-group emailError:has-error"}}>
+                                {{#if emailError}}
+                                    <label class="control-label" for="email">Please enter a valid E-mail address</label>
+                                {{/if}}
                                 {{input id='email' placeholder='E-mail' class="form-control" value=email}}
                             </div>
-                            <div class="form-group">
+                            <div {{bind-attr class=":form-group passwordError:has-error"}}>
+                                {{#if passwordError}}
+                                    <label class="control-label" for="identification">Please enter a password</label>
+                                {{/if}}
                                 {{input id='password' placeholder='Password' class="form-control" type='password' value=password}}
                             </div>
                             <button class="btn btn-lg btn-success btn-block">Create</button>

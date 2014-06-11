@@ -1,6 +1,20 @@
 export default Ember.Controller.extend({
   actions: {
     register: function() {
+
+      this.set('emailError', false);
+      this.set('passwordError', false);
+
+      if(!this.get('email')) {
+        this.set('emailError', true);
+        return;
+      }
+
+      if(!this.get('password')) {
+        this.set('passwordError', true);
+        return;
+      }
+
       var self = this, data = this.getProperties('email', 'full_name');
       return new Ember.RSVP.Promise(function(resolve) {
       $.ajax({
