@@ -41,7 +41,7 @@ export default Ember.Route.extend({
         // Update the user's surveys
         var user = self.store.getById('person', self.get('session').content.user_id);
         user.reload().then(function() {
-          self.send('showSuccess');
+          self.send('showError', null);
           self.transitionTo('stream', saved);
         });
 

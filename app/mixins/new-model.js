@@ -23,6 +23,7 @@ export default Ember.Mixin.create({
 
   actions: {
     cancel: function() {
+      this.send('showError', null);
       this.transitionTo('home');
     },
 

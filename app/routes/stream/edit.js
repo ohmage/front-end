@@ -8,6 +8,7 @@ export default Ember.Route.extend(ReloadModel, Editable, Schema, {
   },
   actions: {
     cancel: function(model) {
+      this.send('showError', null);
       this.transitionTo('stream', model);
     }
   },

@@ -9,11 +9,12 @@ export default Ember.Controller.extend({
         contentType: "application/json", 
         data: JSON.stringify(data), 
         success: function() {
-          self.send('showSuccess', "Please check your e-mail to click the verification link to continue.");
+          self.set('error', null);
+          self.set('success', "Please check your e-mail and click the verification link to continue.");
           resolve();
         },
         error: function(error) {
-          self.send('showError', error.responseText);
+          self.set('error', error.responseText || "Unknown Error");
           resolve();
         }
       });
