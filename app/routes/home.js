@@ -4,6 +4,7 @@ export default Ember.Route.extend(Ember.SimpleAuth.AuthenticatedRouteMixin, {
   },
 
   renderTemplate: function() {
-    this.render({ outlet: 'sidebar' });
+    this.render('sidebar', { outlet: 'sidebar'});
+    this.render();
   },
 });

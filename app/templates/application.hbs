@@ -36,21 +36,6 @@
       {{outlet 'sidebar'}}
   </nav>
 
-
-  <div id="page-wrapper">
-    {{#if error}}
-    <div class="row">
-        <div class="col-lg-12">
-          <div class="alert alert-danger">
-            <strong>Oh snap!</strong> {{error}}
-          </div>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    {{/if}}
-
-    {{outlet}}
-  </div>
-  <!-- /#page-wrapper -->
+  {{outlet}}
 </div>
 <!-- /#page-wrapper -->
