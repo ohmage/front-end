@@ -42,3 +42,11 @@ body {
 .nav > li > a.item.active {
   background-color: #e4e4e4;
 }
+
+.nav > li > a:hover .action {
+  display: block;
+}
+
+.action {
+  display: none;
+}

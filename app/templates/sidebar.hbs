@@ -34,6 +34,11 @@
               <li>
                 {{#if id}}
                   {{#link-to 'survey' this class="item"}}
+                    {{#if ownedByCurrentUser}}
+                      <i class="fa fa-edit pull-right action" {{action 'edit' this bubbles=false}}></i>
+                    {{else}}
+                      <i class="fa fa-copy pull-right action" {{action 'clone' this bubbles=false}}></i>
+                    {{/if}}
                     <span class="overflow-ellipsis">
                       {{name}}
                     </span>
@@ -54,6 +59,11 @@
               <li>
                 {{#if id}}
                   {{#link-to 'stream' this class="item"}}
+                    {{#if ownedByCurrentUser}}
+                      <i class="fa fa-edit pull-right action" {{action 'edit' this bubbles=false}}></i>
+                    {{else}}
+                      <i class="fa fa-copy pull-right action" {{action 'clone' this bubbles=false}}></i>
+                    {{/if}}
                     <span class="overflow-ellipsis">
                       {{name}}
                     </span>
