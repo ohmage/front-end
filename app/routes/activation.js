@@ -6,7 +6,7 @@ export default Ember.Route.extend({
     });
   },
 
-  afterModel: function(res, transition) {
+  afterModel: function() {
     this.transitionTo('home');
   }
 });
