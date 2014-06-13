@@ -21,6 +21,8 @@ export default DS.Model.extend({
 
   schemaSortProperties: ['name'],
 
+  sortedOhmlets: Ember.computed.sort('ohmlets', 'schemaSortProperties'),
+
   latestSurveys: function() {
     var all = [];
 

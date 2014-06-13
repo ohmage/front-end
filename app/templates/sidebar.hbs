@@ -4,7 +4,7 @@
 
       <li class="sidebar-search">
           <div class="input-group custom-search-form">
-              <input type="text" class="form-control" placeholder="Search...">
+              {{input type="text" class="form-control" placeholder="Search..." value=query}}
               <span class="input-group-btn">
               <button class="btn btn-default" type="button">
                   <i class="fa fa-search"></i>
@@ -30,7 +30,7 @@
       <li>
           <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Surveys<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
-            {{#each sortedSurveys}}
+            {{#each surveys}}
               <li>
                 {{#if id}}
                   {{#link-to 'survey' this class="item"}}
@@ -55,7 +55,7 @@
       <li>
           <a href="#"><i class="fa fa-exchange fa-fw"></i> Streams<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
-            {{#each sortedStreams}}
+            {{#each streams}}
               <li>
                 {{#if id}}
                   {{#link-to 'stream' this class="item"}}
