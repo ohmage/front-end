@@ -51,7 +51,7 @@ export default Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMixin, {
           url: "/ohmage/people?" + parameters,
           contentType: "application/json",
           data: JSON.stringify(data),
-          success: function() { success(resolve) },
+          success: function() { success(resolve); },
           error: function(error) {
             self.set('error', error.responseText || "Unknown Error");
             resolve();

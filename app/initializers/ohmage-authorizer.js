@@ -1,3 +1,5 @@
+/*global gapi:false */
+
 var OhmageAuthorizer = Ember.SimpleAuth.Authorizers.OAuth2.extend({
   /**
     Authorizes an XHR request by sending the `access_token` property from the
