@@ -10,6 +10,7 @@
     {{BASE_TAG}}
 
     <link rel="stylesheet" href="assets/ohmage.css">
+    <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <script>
@@ -17,6 +18,19 @@
     </script>
     <script src="assets/ohmage.js"></script>
     <script src="assets/ace.js"></script>
+
+    <meta name="google-signin-clientid" content="494798802772-2jom9to52beivt0vb1g4o0fhejgqsnko.apps.googleusercontent.com" />
+    <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email" />
+    <meta name="google-signin-cookiepolicy" content="single_host_origin" />
+    <meta name="google-signin--apppackagename" content="org.ohmage.app" />
+    <script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+    </script>
+
     <script>
       window.Ohmage = require('ohmage/app')['default'].create(ENV.APP);
     </script>

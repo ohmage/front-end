@@ -50,3 +50,23 @@ body {
 .action {
   display: none;
 }
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: #ddd;
+  text-align: center;
+  color: #737373;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: 'Playball', cursive;
+  font-size: 1.8em;
+}
+
+.divider span {
+  background-color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: relative;
+  top: -0.7em;
+}

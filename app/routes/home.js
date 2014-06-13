@@ -19,6 +19,11 @@ export default Ember.Route.extend(Ember.SimpleAuth.AuthenticatedRouteMixin, {
 
     clone: function(model) {
       this.transitionTo(model.constructor.typeKey + ".clone", model);
-    }
+    },
+
+    willTransition: function() {
+      this.controller.set('error', null);
+      return true;
+    },
   }
 });

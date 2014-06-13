@@ -17,6 +17,7 @@
     "jsonlint": "~1.6.0",
     "fontawesome": "~4.1.0",
     "metisMenu": "~1.0.1",
-    "ace-builds": "~1.1.3"
+    "ace-builds": "~1.1.3",
+    "bootstrap-social": "~4.5.0"
   }
 }
