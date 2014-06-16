@@ -34,18 +34,50 @@ via [homebrew].
 
     brew install phantomjs
 
+####ohmage server
+
+By default, it also requires the ohmage-3.0 [server] to be running on the same machine and
+accessible at `/ohmage` on the same port.
+
 HOW TO SERVE THE PROJECT
 ------------------------
 
 If you are checking the project out for the first time you should install the npm and bower
-dependencies, and then serve it with the ember command.
+dependencies.
 
     cd front-end && npm install && bower install
+
+####Production
+
+To build the app for production run
+
+    ember build --environment=production
+
+####Development
+
+During development it is useful to use ember to serve the front end. It will automatically update
+the page when it notices changes. It also won't minify the javascript which makes it easier to step
+through the code in the browser.
+
     ember serve
 
-By default, it also requires the ohmage-3.0 [server] to be running on the same machine. This can
-be set up by starting tomcat and ember, and using nginx to reverse proxy the `/ohmage` prefix
-to tomcat. (tomcat, and nginx can also both be installed with [homebrew])
+You would then set up a reverse proxy in nginx to forward `/` to`http://localhost:4200/`
+
+Example nginx config:
+
+    location / {
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://localhost:4200/;
+    }
+
+    location /ohmage {
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://localhost:8080/ohmage;
+    }
 
 CONTRIBUTE
 ----------
