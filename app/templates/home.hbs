@@ -1,4 +1,8 @@
-<div id="page-wrapper">
+{{#if session.isAuthenticated}}
+  <div id="page-wrapper">
+{{else}}
+  <div id="wholepage-wrapper">
+{{/if}}
   {{#if error}}
   <div class="row">
       <div class="col-lg-12">

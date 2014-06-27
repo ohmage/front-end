@@ -1,4 +1,4 @@
-export default Ember.Mixin.create({
+export default Ember.Mixin.create(Ember.SimpleAuth.AuthenticatedRouteMixin, {
   actions: {
     willTransition: function(transition) {
       var controller = this.controller;

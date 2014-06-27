@@ -1,10 +1,20 @@
 export default Ember.Route.extend(Ember.SimpleAuth.AuthenticatedRouteMixin, {
   model: function() {
-    return this.store.find('person', this.get('session').content.user_id);
+    if(this.get('session').get('isAuthenticated'))
+      return this.store.find('person', this.get('session').content.user_id);
+  },
+
+  beforeModel: function(transition) {
+    // Only abort the transition if we are going to '/'
+    if(transition.intent.url === "/") {
+      this._super(transition);
+    }
   },
 
   renderTemplate: function() {
-    this.render('sidebar', { outlet: 'sidebar'});
+    if(this.get('session').get('isAuthenticated')) {
+      this.render('sidebar', { outlet: 'sidebar'});
+    }
     this.render();
   },
 
