@@ -8,6 +8,7 @@ Router.map(function() {
 
     this.resource('survey', function() {
       this.route('new');
+      this.route('index_newest', { path: '/:schema_id' });
       this.route('index', { path: '/:schema_id/:schema_version' });
       this.route('edit', { path: '/:schema_id/:schema_version/edit' });
       this.route('clone', { path: '/:schema_id/:schema_version/clone' });
@@ -15,6 +16,7 @@ Router.map(function() {
 
     this.resource('stream', function() {
       this.route('new');
+      this.route('index_newest', { path: '/:schema_id' });
       this.route('index', { path: '/:schema_id/:schema_version' });
       this.route('edit', { path: '/:schema_id/:schema_version/edit' });
       this.route('clone', { path: '/:schema_id/:schema_version/clone' });

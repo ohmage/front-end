@@ -8,7 +8,11 @@ export default Ember.Mixin.create({
   },
 
   buildId: function(schema) {
-    schema.id=schema.schema_id + "/" + schema.schema_version;
+    if(schema.schema_version) {
+      schema.id=schema.schema_id + "/" + schema.schema_version;
+    } else {
+      schema.id=schema.schema_id;
+    }
     return schema.id;
   },
 });
