@@ -12,4 +12,13 @@ export default ApplicationAdapter.extend(SchemaMixin, {
       return json;
     });
   },
+
+  ajax: function(url, type, hash) {
+    return this._super(url, type, hash).then(function(json){
+      // Because of a bug in Ember Data and how the primary key is looked up for embedded records
+      // We use the adapter to inject 'id' for an ajax request
+      json.id = json.ohmlet_id;
+      return json;
+    });
+  },
 });
