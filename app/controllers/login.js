@@ -1,3 +1,5 @@
+import Ember from "ember";
+
 export default Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMixin, {
   authenticatorFactory: 'authenticator:ohmage',
 
@@ -46,7 +48,7 @@ export default Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMixin, {
       }
 
       return new Ember.RSVP.Promise(function(resolve) {
-        $.ajax({
+        Ember.$.ajax({
           type: "post",
           url: "/ohmage/people?" + parameters,
           contentType: "application/json",

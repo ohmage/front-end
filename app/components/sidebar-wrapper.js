@@ -1,3 +1,5 @@
+import Ember from "ember";
+
 export default Ember.Component.extend({
   classNames: ['sidebar-collapse'],
 
@@ -18,11 +20,11 @@ export default Ember.Component.extend({
       self.set('width', width);
     };
 
-    $(window).bind('load resize', this._resizeHandler);
+    Ember.$(window).bind('load resize', this._resizeHandler);
   },
 
   willClearRender: function() {
     this._super();
-    $(window).unbind('load resize', this._resizeHandler);
+    Ember.$(window).unbind('load resize', this._resizeHandler);
   }
 });

@@ -1,4 +1,5 @@
 import ApplicationSerializer from "./application";
+import Ember from "ember";
 
 export default ApplicationSerializer.extend({
 
@@ -7,7 +8,7 @@ export default ApplicationSerializer.extend({
   // TODO: maybe use serializeAttribute? or does that change what is saved
   serializeAttribute: function(record, json, key, attribute) {
     // skip ignored keys
-    if($.inArray(key, this.ignoreKeys) === -1) {
+    if(Ember.$.inArray(key, this.ignoreKeys) === -1) {
       this._super(record, json, key, attribute);
     }
   },

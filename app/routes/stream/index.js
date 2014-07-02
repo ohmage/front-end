@@ -1,3 +1,4 @@
+import Ember from "ember";
 import ReloadModel from 'ohmage/mixins/reload-model';
 import Schema from 'ohmage/mixins/schema';
 

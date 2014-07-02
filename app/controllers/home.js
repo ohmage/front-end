@@ -1,3 +1,5 @@
+import Ember from "ember";
+
 var filterByName = function(item) {
     var query = this.get('query');
     if(query) {

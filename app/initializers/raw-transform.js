@@ -1,3 +1,5 @@
+import DS from "ember-data";
+
 var RawTransform = DS.Transform.extend({
   deserialize: function(serialized) {
     return serialized ? JSON.stringify(serialized, null, "  ") : null;

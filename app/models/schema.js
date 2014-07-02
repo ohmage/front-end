@@ -1,3 +1,6 @@
+import DS from "ember-data";
+import Ember from "ember";
+
 export default DS.Model.extend({
 
   schema_id: DS.attr('string'),
@@ -10,7 +13,7 @@ export default DS.Model.extend({
     return this.get('owner') === this.container.lookup('route:application').session.content.user_id;
   }.property('owner'),
 
-  isLoaded: Em.K,
+  isLoaded: Ember.K,
 
   clone: function() {
     var newRecord = this._super();

@@ -1,3 +1,5 @@
+import Ember from "ember";
+
 export default Ember.Mixin.create({
   parseId: function(id) {
     var values = id.split('/');

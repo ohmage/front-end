@@ -1,3 +1,6 @@
+import DS from "ember-data";
+import Ember from "ember";
+
 var ApplicationSerializer = DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
 
   keyForRelationship: function(key, kind) {

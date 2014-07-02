@@ -1,3 +1,5 @@
+import DS from "ember-data";
+
 import SchemaModel from 'ohmage/models/schema';
 
 export default SchemaModel.extend({

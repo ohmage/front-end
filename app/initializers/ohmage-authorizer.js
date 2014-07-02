@@ -1,4 +1,5 @@
 /*global gapi:false */
+import Ember from "ember";
 
 var OhmageAuthorizer = Ember.SimpleAuth.Authorizers.OAuth2.extend({
   /**
@@ -110,8 +111,9 @@ var GooglePlusAuthenticator = OhmageAuthenticator.extend({
           if (authResult && !authResult.error) {
             resolve(self.authenticateWithProvider('google', authResult.access_token));
           } else {
-            if(!authResult || authResult.error !== 'immediate_failed')
+            if(!authResult || authResult.error !== 'immediate_failed') {
               reject((authResult || {}).error);
+            }
           }
         }
       });

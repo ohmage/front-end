@@ -1,3 +1,5 @@
+import Ember from "ember";
+
 /**
   Sets up the sidebar to include the new item using `addModelToUserList`
 */
@@ -19,7 +21,7 @@ export default Ember.Mixin.create({
   /**
     The model should be added to the correct list on the user
   */
-  addModelToUserList: Em.K,
+  addModelToUserList: Ember.K,
 
   actions: {
     cancel: function() {

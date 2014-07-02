@@ -1,3 +1,5 @@
+import Ember from "ember";
+
 export default Ember.Component.extend({
   classNames: ['editor'],
 
@@ -36,7 +38,7 @@ export default Ember.Component.extend({
     var renderer = this.editor.renderer;
     var newHeight = this.editor.getSession().getScreenLength() * renderer.lineHeight + renderer.scrollBar.getWidth();
     newHeight = Math.max(newHeight, 200);
-    $("#" + this.elementId).height(newHeight.toString());
+    Ember.$("#" + this.elementId).height(newHeight.toString());
     this.editor.resize();
   }.observes('content')
 });

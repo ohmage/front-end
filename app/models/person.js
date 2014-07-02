@@ -1,3 +1,6 @@
+import DS from "ember-data";
+import Ember from "ember";
+
 var filterNewest = function (list) {
   return list.reduce(function(ret, item) {
     var old = ret.findBy('schema_id', item.get('schema_id'));

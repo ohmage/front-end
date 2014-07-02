@@ -1,3 +1,5 @@
+import Ember from "ember";
+
 /**
   Set a cloned version of the model on the controller
 */

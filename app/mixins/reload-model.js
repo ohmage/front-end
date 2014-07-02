@@ -1,3 +1,5 @@
+import Ember from "ember";
+
 /**
   Checks that the model is completely loaded before setting it on the
   controller. This happens when the item is partially loaded (ie. it
