@@ -1,31 +1,32 @@
 /*global gapi:false */
 import Ember from "ember";
+import Authenticator from 'simple-auth-oauth2/authenticators/oauth2';
+import Authorizor from 'simple-auth-oauth2/authorizers/oauth2';
 
-var OhmageAuthorizer = Ember.SimpleAuth.Authorizers.OAuth2.extend({
-  /**
-    Authorizes an XHR request by sending the `access_token` property from the
-    session as a bearer token in the `Authorization` header:
+var OhmageAuthorizer = Authorizor.extend({
+/**
+  Authorizes an XHR request by sending the `access_token` property from the
+  session as a bearer token in the `Authorization` header:
 
-    ```
-    Authorization: Bearer <access_token>
-    ```
+  ```
+  Authorization: Bearer <access_token>
+  ```
 
-    @method authorize
-    @param {jqXHR} jqXHR The XHR request to authorize (see http://api.jquery.com/jQuery.ajax/#jqXHR)
-    @param {Object} requestOptions The options as provided to the `$.ajax` method (see http://api.jquery.com/jQuery.ajaxPrefilter/)
-    */
-    authorize: function(jqXHR, requestOptions) {
-      var accessToken = this.get('session.access_token');
-      if (this.get('session.isAuthenticated') && !Ember.isEmpty(accessToken)) {
-      if (!Ember.SimpleAuth.Utils.isSecureUrl(requestOptions.url)) {
-        Ember.Logger.warn('Credentials are transmitted via an insecure connection - use HTTPS to keep them secure.');
-      }
+  @method authorize
+  @param {jqXHR} jqXHR The XHR request to authorize (see http://api.jquery.com/jQuery.ajax/#jqXHR)
+  @param {Object} requestOptions The options as provided to the `$.ajax` method (see http://api.jquery.com/jQuery.ajaxPrefilter/)
+  */
+  authorize: function(jqXHR, requestOptions) {
+    // This call to super really only gives a warning if the credentials aren't transmitted over https
+    this._super(jqXHR, requestOptions);
+    var accessToken = this.get('session.access_token');
+    if (this.get('session.isAuthenticated') && !Ember.isEmpty(accessToken)) {
       jqXHR.setRequestHeader('Authorization', 'ohmage ' + accessToken);
     }
   }
 });
 
-var OhmageAuthenticator = Ember.SimpleAuth.Authenticators.OAuth2.extend({
+var OhmageAuthenticator = Authenticator.extend({
   serverTokenEndpoint: '/ohmage/auth_token',
 
   expiresAt: function(response) {
@@ -127,13 +128,16 @@ var GooglePlusAuthenticator = OhmageAuthenticator.extend({
 
 export default {
   name: 'authentication',
-  initialize: function(container, application) {
+  before: 'simple-auth',
+  initialize: function(container) {
     container.register('authorizer:ohmage', OhmageAuthorizer);
     container.register('authenticator:ohmage', OhmageAuthenticator);
     container.register('authenticator:googleplus', GooglePlusAuthenticator);
-    Ember.SimpleAuth.setup(container, application, {
-      authorizerFactory: 'authorizer:ohmage',
+
+    window.ENV = window.ENV || {};
+    window.ENV['simple-auth'] = {
+      authorizer: 'authorizer:ohmage',
       routeAfterAuthentication: 'home'
-    });
+    };
   }
 };

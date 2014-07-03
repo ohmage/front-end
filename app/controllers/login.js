@@ -1,7 +1,8 @@
 import Ember from "ember";
+import LoginControllerMixin from 'simple-auth/mixins/login-controller-mixin';
 
-export default Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMixin, {
-  authenticatorFactory: 'authenticator:ohmage',
+export default Ember.Controller.extend(LoginControllerMixin, {
+  authenticator: 'authenticator:ohmage',
 
   ohmageAccount: Ember.computed.not('provider_token'),
 

@@ -1,6 +1,7 @@
 import Ember from "ember";
+import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Mixin.create(Ember.SimpleAuth.AuthenticatedRouteMixin, {
+export default Ember.Mixin.create(AuthenticatedRouteMixin, {
   actions: {
     willTransition: function(transition) {
       var controller = this.controller;

@@ -1,6 +1,7 @@
 import Ember from "ember";
+import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend(Ember.SimpleAuth.AuthenticatedRouteMixin, {
+export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function() {
     if(this.get('session').get('isAuthenticated')) {
       return this.store.find('person', this.get('session').content.user_id);

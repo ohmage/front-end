@@ -17,10 +17,6 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-app.import('vendor/ember-simple-auth/ember-simple-auth.js');
-
-app.import('vendor/ember-simple-auth/ember-simple-auth-oauth2.js');
-
 app.import('vendor/jsonlint/web/jsonlint.js');
 
 app.import('vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js');
