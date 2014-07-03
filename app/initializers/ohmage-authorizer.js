@@ -17,11 +17,14 @@ var OhmageAuthorizer = Authorizor.extend({
   @param {Object} requestOptions The options as provided to the `$.ajax` method (see http://api.jquery.com/jQuery.ajaxPrefilter/)
   */
   authorize: function(jqXHR, requestOptions) {
-    // This call to super really only gives a warning if the credentials aren't transmitted over https
-    this._super(jqXHR, requestOptions);
-    var accessToken = this.get('session.access_token');
-    if (this.get('session.isAuthenticated') && !Ember.isEmpty(accessToken)) {
-      jqXHR.setRequestHeader('Authorization', 'ohmage ' + accessToken);
+    // Don't authorize the auth token path
+    if(requestOptions.url !== '/ohmage/auth_token') {
+      // This call to super really only gives a warning if the credentials aren't transmitted over https
+      this._super(jqXHR, requestOptions);
+      var accessToken = this.get('session.access_token');
+      if (this.get('session.isAuthenticated') && !Ember.isEmpty(accessToken)) {
+        jqXHR.setRequestHeader('Authorization', 'ohmage ' + accessToken);
+      }
     }
   }
 });
