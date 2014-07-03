@@ -29,10 +29,6 @@ var OhmageAuthorizer = Authorizor.extend({
 var OhmageAuthenticator = Authenticator.extend({
   serverTokenEndpoint: '/ohmage/auth_token',
 
-  expiresAt: function(response) {
-   return response.expires;
-  },
-
   authenticate: function(options) {
     if(options.identification && options.password) {
       return this.authenticateWithPayload({ email: options.identification, password: options.password });
@@ -53,7 +49,7 @@ var OhmageAuthenticator = Authenticator.extend({
     return new Ember.RSVP.Promise(function(resolve, reject) {
       _this.makeRequest(data).then(function(response) {
         Ember.run(function() {
-          var expiresAt = _this.expiresAt(response) || _this.absolutizeExpirationTime(response.expires_in);
+          var expiresAt = _this.absolutizeExpirationTime(response.expires_in);
           _this.scheduleAccessTokenRefresh(response.expires_in, expiresAt, response.refresh_token);
           resolve(Ember.$.extend(response, { expires_at: expiresAt }));
         });
@@ -70,31 +66,13 @@ var OhmageAuthenticator = Authenticator.extend({
     });
   },
 
-  refreshAccessToken: function(expiresIn, refreshToken) {
-    var _this = this;
-    var data  = { refresh_token: refreshToken };
-    return new Ember.RSVP.Promise(function(resolve, reject) {
-      _this.makeRequest(data).then(function(response) {
-        Ember.run(function() {
-          expiresIn     = response.expires_in || expiresIn;
-          refreshToken  = response.refresh_token || refreshToken;
-          var expiresAt = _this.expiresAt(response) || _this.absolutizeExpirationTime(expiresIn);
-          var data      = Ember.$.extend(response, { expires_in: expiresIn, expires_at: expiresAt, refresh_token: refreshToken });
-          _this.scheduleAccessTokenRefresh(expiresIn, null, refreshToken);
-          _this.trigger('updated', data);
-          resolve(data);
-        });
-      }, function(xhr, status, error) {
-        Ember.Logger.warn('Access token could not be refreshed - server responded with ' + error + '.');
-        reject();
-      });
-    });
-  },
-
   makeRequest: function(data) {
-    var response = this._super(data);
-    response.expires_at = response.expires;
-    delete response.expires;
+    var response = this._super(data).then(function(response) {
+      response.expires_in = (response.expires - new Date().getTime())/1000;
+      response.expires_at = response.expires;
+      delete response.expires;
+      return response;
+    });
     return response;
   },
 });
